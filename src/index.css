@@ -230,6 +230,12 @@ input[type="submit"]:hover {
   align-items: baseline;
   align-content: start;
 }
+.add-btn {
+  padding: 10px;
+  border: none;
+  background-color: #4b4964;
+  color: #fff;
+}
 
 .btn:active,
 .add-btn:active {
