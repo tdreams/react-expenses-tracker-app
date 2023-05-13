@@ -12,14 +12,24 @@ import {
   Paper,
   colors,
 } from "@mui/material";
+import Forms from "./components/Forms";
+import MuiTable from "./components/MuiTable";
+import Nav from "./components/Nav";
+import Sidebar from "./components/Sidebar";
 
 export default function App() {
+  const currentMonth = new Date().getMonth() + 1;
+  const formatting = String(currentMonth).length <= 1 ? "0" : null;
+  const formattedCurrentMonth = formatting + currentMonth;
+  const currentYear = new Date().getFullYear();
+
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState(0);
   const [list, setList] = useState([]);
+  const [date, setDate] = useState(currentYear + "-" + formattedCurrentMonth);
+  const [category, setCategory] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
-  const timeElapsed = Date.now();
-  const today = new Date(timeElapsed);
+  const [showForm, setShowForm] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -27,13 +37,17 @@ export default function App() {
       id: uuidv4(),
       item,
       amount,
-      date: today.toDateString(),
+      date,
+      category,
     };
 
-    if (item && amount) {
+    if (item && amount && date && category) {
       setList([...list, newItem]);
       setItem("");
-      setAmount("");
+      setAmount(0);
+      setDate("");
+      setCategory("");
+      setShowForm(false);
     }
   };
 
@@ -58,92 +72,34 @@ export default function App() {
     (sum, item) => sum + parseFloat(item.amount),
     0
   );
+  const toggleForm = () => {
+    setShowForm(!showForm);
+  };
   console.log(list);
   return (
     <>
-      <div className="forms">
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="item">Item</label>
-          <input
-            id="item"
-            type="text"
-            value={item}
-            placeholder="Add a new item..."
-            onChange={(e) => setItem(e.target.value)}
-          />
-
-          <label htmlFor="amount">Amount</label>
-          <input
-            id="amount"
-            type="number"
-            value={amount}
-            onChange={(e) => setAmount(e.target.value)}
-          />
-
-          <button className="add-btn">Add Item</button>
-        </form>
-      </div>
-      <div className="table-container">
-        <TableContainer
-          component={Paper}
-          sx={{ maxHeight: "300px", backgroundColor: "#2A263E" }}
-        >
-          <Table
-            aria-label="simple table"
-            sx={{
-              borderTopLeftRadius: "40px",
-              borderTopRightRadiusRadius: "40px",
-            }}
-            stickyHeader
-          >
-            <TableHead>
-              <TableRow>
-                <TableCell
-                  onClick={sortList}
-                  sx={{ cursor: "pointer", backgroundColor: "#3B3953" }}
-                >
-                  Item
-                  {sortIcon}
-                </TableCell>
-                <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
-                  Amount
-                  <br />
-                  {`Total $ ${totalAmount.toFixed()}`}
-                </TableCell>
-                <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
-                  Created at
-                </TableCell>
-                <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
-                  Id
-                </TableCell>
-                <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
-                  Delete
-                </TableCell>
-              </TableRow>
-            </TableHead>
-
-            <TableBody>
-              {list.map((e) => (
-                <TableRow key={e.id} sx={{ ":hover": { bgcolor: "#3B3953" } }}>
-                  <TableCell>{e.item}</TableCell>
-                  <TableCell align="right">
-                    {Number(e.amount).toFixed(2)}
-                  </TableCell>
-                  <TableCell align="right">{e.date}</TableCell>
-                  <TableCell align="right">
-                    {e.id.slice(0, 3).concat("...")}
-                  </TableCell>
-                  <TableCell align="right">
-                    <button onClick={() => deleteItem(e.id)} className="btn">
-                      Delete
-                    </button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+      <Nav />
+      <Sidebar setShowForm={setShowForm} showForm={showForm} />
+      <MuiTable
+        sortList={sortList}
+        sortIcon={sortIcon}
+        totalAmount={totalAmount}
+        list={list}
+        deleteItem={deleteItem}
+      />
+      {showForm && (
+        <Forms
+          handleSubmit={handleSubmit}
+          item={item}
+          setItem={setItem}
+          amount={amount}
+          setAmount={setAmount}
+          date={date}
+          setDate={setDate}
+          category={category}
+          setCategory={setCategory}
+        />
+      )}
     </>
   );
 }

@@ -1,0 +1,92 @@
+import React from "react";
+import { MdDeleteOutline } from "react-icons/md";
+import {
+  TableContainer,
+  Table,
+  TableHead,
+  TableBody,
+  TableRow,
+  TableCell,
+  Paper,
+} from "@mui/material";
+
+const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
+  return (
+    <div className="table-container">
+      <TableContainer
+        component={Paper}
+        sx={{
+          maxHeight: "600px",
+          backgroundColor: "#2A263E",
+          padding: "0px 0px",
+        }}
+      >
+        <Table
+          aria-label="simple table"
+          sx={{ borderRadius: "20px" }}
+          stickyHeader
+        >
+          <TableHead>
+            <TableRow>
+              <TableCell
+                onClick={sortList}
+                sx={{ cursor: "pointer", backgroundColor: "#3B3953" }}
+              >
+                Item
+                {sortIcon}
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+                Amount
+                <br />
+                {`Total $ ${totalAmount.toFixed()}`}
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+                Category
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+                Date
+              </TableCell>
+              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+                Id
+              </TableCell>
+              <TableCell
+                align="right"
+                sx={{ backgroundColor: "#3B3953" }}
+              ></TableCell>
+            </TableRow>
+          </TableHead>
+
+          <TableBody>
+            {list.length > 0 ? (
+              list.map((e) => (
+                <TableRow key={e.id} sx={{ ":hover": { bgcolor: "#3B3953" } }}>
+                  <TableCell>{e.item}</TableCell>
+                  <TableCell align="right">
+                    {Number(e.amount).toFixed(2)}
+                  </TableCell>
+                  <TableCell align="right">{e.category}</TableCell>
+                  <TableCell align="right">{e.date}</TableCell>
+                  <TableCell align="right">
+                    {e.id.slice(0, 3).concat("...")}
+                  </TableCell>
+                  <TableCell align="right" className="btn-ic">
+                    <MdDeleteOutline onClick={() => deleteItem(e.id)} />
+                  </TableCell>
+                </TableRow>
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={6}>
+                  <h1 align="center">Welcome to Expense Tracker!</h1>
+                  <p className="subtitle">Add, and delete expenses.</p>
+                </TableCell>
+              </TableRow>
+            )}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
+  );
+};
+
+export default MuiTable;
