@@ -6,7 +6,7 @@ const Sidebar = ({ setShowForm, showForm }) => {
     <div className="sidebar">
       <ul>
         <li>
-          <a onClick={() => setShowForm(!showForm)} className="add-ex">
+          <a onClick={() => setShowForm(!showForm)} className="add-ex ">
             <IoAddCircle />
             Add Expense
           </a>

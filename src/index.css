@@ -52,6 +52,30 @@ body {
   padding: 20px;
 }
 
+@media (width <1489px) {
+  .table-container {
+    width: 60rem;
+    transform: translateX(150px);
+  }
+}
+@media (width <1330px) {
+  .table-container {
+    width: 50rem;
+  }
+}
+
+@media (width <1130px) {
+  .table-container {
+    width: 30rem;
+    transform: translateX(100px);
+  }
+  .table-container .subtitle {
+    margin-left: 5.5rem;
+    font-size: 1.5rem;
+    color: #acacac;
+  }
+}
+
 .sidebar ul {
   list-style: none;
   padding: 0;

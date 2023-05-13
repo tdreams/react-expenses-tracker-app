@@ -11,6 +11,52 @@ import {
 } from "@mui/material";
 
 const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
+  const getRowStyle = (category) => {
+    let backgroundColor;
+    let color;
+
+    switch (category) {
+      case "Food":
+        backgroundColor = "#f8d7da";
+        break;
+      case "Shopping":
+        backgroundColor = "#d4edda";
+        break;
+      case "travel":
+        backgroundColor = "black";
+        break;
+      case "other":
+        backgroundColor = "#f5f5f5";
+        break;
+      default:
+        backgroundColor = "#fff";
+    }
+
+    // Check luminance of background color and set text color
+    const luminance = getLuminance(backgroundColor);
+    if (luminance > 0.5) {
+      color = "#000";
+    } else {
+      color = "#fff";
+    }
+
+    return {
+      backgroundColor,
+      color,
+    };
+  };
+
+  // Helper function to calculate luminance of a color
+  const getLuminance = (color) => {
+    const rgb = color
+      .substring(1)
+      .match(/.{2}/g)
+      .map((c) => parseInt(c, 16));
+    const luminance =
+      (0.2126 * rgb[0] + 0.7152 * rgb[1] + 0.0722 * rgb[2]) / 255;
+    return luminance;
+  };
+
   return (
     <div className="table-container">
       <TableContainer
@@ -59,7 +105,11 @@ const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
           <TableBody>
             {list.length > 0 ? (
               list.map((e) => (
-                <TableRow key={e.id} sx={{ ":hover": { bgcolor: "#3B3953" } }}>
+                <TableRow
+                  key={e.id}
+                  //style={getRowStyle(e.category)}
+                  sx={{ ":hover": { bgcolor: "#3B3953" } }}
+                >
                   <TableCell>{e.item}</TableCell>
                   <TableCell align="right">
                     {Number(e.amount).toFixed(2)}
