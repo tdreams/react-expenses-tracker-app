@@ -39,6 +39,7 @@ body {
   margin: 0 auto;
   color: #fff;
   margin-top: 10rem;
+  transform: translateX(110px);
 }
 .sidebar {
   position: fixed;
