@@ -11,12 +11,6 @@ const Sidebar = ({ setShowForm, showForm }) => {
             Add Expense
           </a>
         </li>
-        <li>
-          <a>About</a>
-        </li>
-        <li>
-          <a>Contact</a>
-        </li>
       </ul>
     </div>
   );

@@ -76,28 +76,44 @@ const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
             <TableRow>
               <TableCell
                 onClick={sortList}
-                sx={{ cursor: "pointer", backgroundColor: "#3B3953" }}
+                sx={{
+                  cursor: "pointer",
+                  backgroundColor: "#3B3953",
+                  fontSize: "1.2rem",
+                }}
               >
                 Item
                 {sortIcon}
               </TableCell>
-              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+              <TableCell
+                align="right"
+                sx={{ backgroundColor: "#3B3953", fontSize: "1.2rem" }}
+              >
                 Amount
                 <br />
                 {`Total $ ${totalAmount.toFixed()}`}
               </TableCell>
-              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+              <TableCell
+                align="right"
+                sx={{ backgroundColor: "#3B3953", fontSize: "1.2rem" }}
+              >
                 Category
               </TableCell>
-              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+              <TableCell
+                align="right"
+                sx={{ backgroundColor: "#3B3953", fontSize: "1.2rem" }}
+              >
                 Date
               </TableCell>
-              <TableCell align="right" sx={{ backgroundColor: "#3B3953" }}>
+              <TableCell
+                align="right"
+                sx={{ backgroundColor: "#3B3953", fontSize: "1.2rem" }}
+              >
                 Id
               </TableCell>
               <TableCell
                 align="right"
-                sx={{ backgroundColor: "#3B3953" }}
+                sx={{ backgroundColor: "#3B3953", fontSize: "1.2rem" }}
               ></TableCell>
             </TableRow>
           </TableHead>
@@ -110,13 +126,17 @@ const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
                   //style={getRowStyle(e.category)}
                   sx={{ ":hover": { bgcolor: "#3B3953" } }}
                 >
-                  <TableCell>{e.item}</TableCell>
-                  <TableCell align="right">
+                  <TableCell sx={{ fontSize: "1.1rem" }}>{e.item}</TableCell>
+                  <TableCell align="right" sx={{ fontSize: "1.1rem" }}>
                     {Number(e.amount).toFixed(2)}
                   </TableCell>
-                  <TableCell align="right">{e.category}</TableCell>
-                  <TableCell align="right">{e.date}</TableCell>
-                  <TableCell align="right">
+                  <TableCell align="right" sx={{ fontSize: "1.1rem" }}>
+                    {e.category}
+                  </TableCell>
+                  <TableCell align="right" sx={{ fontSize: "1.1rem" }}>
+                    {e.date}
+                  </TableCell>
+                  <TableCell align="right" sx={{ fontSize: "1.1rem" }}>
                     {e.id.slice(0, 3).concat("...")}
                   </TableCell>
                   <TableCell align="right" className="btn-ic">
