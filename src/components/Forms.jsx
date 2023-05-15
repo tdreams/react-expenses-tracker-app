@@ -16,6 +16,7 @@ const Forms = ({
         <div>
           <label>Date </label>
           <input
+            required
             type="date"
             value={date}
             onChange={(e) => setDate(e.target.value)}
@@ -27,6 +28,7 @@ const Forms = ({
             value={category}
             onChange={(e) => setCategory(e.target.value)}
             id="category"
+            required
           >
             <option value="">Select Category</option>
             <option value="groceries">Groceries</option>
@@ -46,6 +48,7 @@ const Forms = ({
         <div>
           <label htmlFor="item">Item</label>
           <input
+            required
             id="item"
             type="text"
             value={item}
@@ -60,6 +63,7 @@ const Forms = ({
             type="number"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
+            required
           />
         </div>
 
