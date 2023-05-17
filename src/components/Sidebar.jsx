@@ -1,3 +1,4 @@
+// Sidebar.jsx
 import React from "react";
 import { IoAddCircle } from "react-icons/io5";
 
@@ -6,10 +7,7 @@ const Sidebar = ({ setShowForm, showForm }) => {
     <div className="sidebar">
       <ul>
         <li>
-          <a onClick={() => setShowForm(!showForm)} className="add-ex ">
-            <IoAddCircle />
-            Add Expense
-          </a>
+          <a className="overview">Overview</a>
         </li>
       </ul>
     </div>

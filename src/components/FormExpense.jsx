@@ -1,12 +1,9 @@
 import React from "react";
-const Forms = ({
-  handleSubmit,
-  nameBudget,
-  setNameBudget,
+
+const FormExpense = ({
+  handleSubmitexpense,
   item,
   setItem,
-  income,
-  setIncome,
   amount,
   setAmount,
   date,
@@ -16,27 +13,7 @@ const Forms = ({
 }) => {
   return (
     <div className="forms">
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="namebuget">Budget name</label>
-          <input
-            required
-            type="text"
-            value={nameBudget}
-            placeholder="Add a name for your budget"
-            onChange={(e) => setNameBudget(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="income">Income</label>
-          <input
-            id="incom"
-            type="number"
-            value={income}
-            onChange={(e) => setIncome(e.target.value)}
-            required
-          />
-        </div>
+      <form onSubmit={handleSubmitexpense}>
         <div>
           <label>Date </label>
           <input
@@ -99,4 +76,4 @@ const Forms = ({
   );
 };
 
-export default Forms;
+export default FormExpense;
