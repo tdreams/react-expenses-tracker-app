@@ -1,11 +1,13 @@
 import React from "react";
 
-const Budget = ({ list }) => {
+const Budget = ({ listBudget }) => {
   return (
     <div className="budget-container">
       <div className="title-container">Budget</div>
       <div className="amount-container">
-        {list.length > 0 ? list.map((e) => `$ ${Number(e.income)}`) : `$ 0`}
+        {listBudget.length > 0
+          ? listBudget.map((e) => `$ ${Number(e.income)}`)
+          : `$ 0`}
       </div>
     </div>
   );

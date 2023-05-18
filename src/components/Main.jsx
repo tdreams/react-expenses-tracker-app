@@ -16,8 +16,6 @@ const Main = () => {
   const currentYear = new Date().getFullYear();
   const [item, setItem] = useState("");
   const [amount, setAmount] = useState(0);
-  const [nameBudget, setNameBudget] = useState("");
-  const [income, setIncome] = useState(0);
   const [list, setList] = useState([]);
   const [date, setDate] = useState(currentYear + "-" + formattedCurrentMonth);
   const [category, setCategory] = useState("");
@@ -25,27 +23,21 @@ const Main = () => {
   const [showForm, setShowForm] = useState(false);
   const [showFormExpense, setShowFormExpense] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
+  const [nameBudget, setNameBudget] = useState("");
+  const [income, setIncome] = useState(0);
+  const [listBudget, setListBudget] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
-      id: uuidv4(),
-      item,
       nameBudget,
       income,
-      amount,
-      date,
-      category,
     };
 
-    if (item && amount && date && category && income) {
-      setList([...list, newItem]);
-      setItem("");
+    if (income) {
+      setListBudget([...listBudget, newItem]);
       setNameBudget("");
       setIncome(0);
-      setAmount(0);
-      setDate("");
-      setCategory("");
       setShowForm(false);
     }
   };
@@ -96,8 +88,11 @@ const Main = () => {
     <div className="main-container">
       <Dashboard
         list={list}
+        listBudget={listBudget}
         totalAmount={totalAmount}
         selectedExpense={selectedExpense}
+        setShowForm={setShowForm}
+        showForm={showForm}
       />
       <div className="row">
         <MainSideBar
@@ -110,6 +105,7 @@ const Main = () => {
           sortIcon={sortIcon}
           totalAmount={totalAmount}
           list={list}
+          listBudget={listBudget}
           deleteItem={deleteItem}
           setSelectedExpense={setSelectedExpense}
           setShowForm={setShowForm}

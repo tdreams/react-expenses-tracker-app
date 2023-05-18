@@ -1,16 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const ProgressBarr = ({ budget, totalAmount }) => {
-  const [progress, setProgress] = useState(0);
-
-  useEffect(() => {
-    if (budget > 0 && totalAmount > 0) {
-      const percentage = (totalAmount / budget) * 100;
-      setProgress(percentage.toFixed(2));
-    } else {
-      setProgress(0);
-    }
-  }, [budget, totalAmount]);
+  const progress = budget !== 0 ? (totalAmount / budget) * 100 : 0;
+  const progressStyle = {
+    width: `${progress}%`,
+  };
 
   return (
     <div className="progress-display">
@@ -19,13 +13,10 @@ const ProgressBarr = ({ budget, totalAmount }) => {
         <p className="title-budget">Budget</p>
         <div className="progress-bar">
           <div className="pourcentage">
-            <p>{`${progress}%`}</p>
+            <p>{`${progress.toFixed()}%`}</p>
           </div>
           <div className="progress-barb">
-            <div
-              className="progress-bar-fill"
-              style={{ width: `${progress}%` }}
-            ></div>
+            <div className="progress-bar-fill" style={progressStyle}></div>
           </div>
         </div>
       </div>

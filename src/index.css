@@ -129,12 +129,15 @@ li {
   line-height: 58px;
 }
 .progress-barb {
+  position: relative;
+  overflow: hidden;
   width: 9rem;
   height: 3rem;
   background: #ffffff;
   border-radius: 20px;
 }
 .progress-bar-fill {
+  position: absolute;
   height: 100%;
   background: linear-gradient(
     270deg,

@@ -3,14 +3,14 @@ import ProgressBarr from "./ProgressBarr";
 import Budget from "./Budget";
 import Total from "./Total";
 
-const Dashboard = ({ list, totalAmount }) => {
-  const budget = list.reduce((sum, item) => sum + parseFloat(item.income), 0);
+const Dashboard = ({ list, listBudget, totalAmount }) => {
+  const budget = listBudget.length > 0 ? listBudget[0].income : 0;
 
   return (
     <div className="dashboard">
       <ProgressBarr budget={budget} totalAmount={totalAmount} />
       <div className="align-center">
-        <Budget list={list} budget={budget} />
+        <Budget listBudget={listBudget} />
         {list.length > 0 ? (
           list.length > 0 && <Total totalAmount={totalAmount} />
         ) : (

@@ -14,6 +14,7 @@ const TableData = ({
   sortList,
   sortIcon,
   list,
+  listBudget,
   listExpense,
   deleteItem,
   setSelectedExpense,
@@ -25,7 +26,7 @@ const TableData = ({
   return (
     <div className="tabledata">
       <div className="tabBar">
-        <div className="tab">{list.map((e) => e.nameBudget)}</div>
+        <div className="tab">{listBudget.map((e) => e.nameBudget)}</div>
         <div>
           <ul>
             <a onClick={toggleForm} className="add-ex">
