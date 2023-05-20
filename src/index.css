@@ -302,6 +302,7 @@ body {
   font-weight: 400;
   font-size: 20px;
   line-height: 24px;
+  color: white;
 }
 
 .table-container td {
@@ -309,8 +310,11 @@ body {
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
-  color: #000000;
+  color: white;
   border: none;
+}
+.table-container td p {
+  color: white;
 }
 
 .table-container .css-rduj6b-MuiPaper-root-MuiTableContainer-root {

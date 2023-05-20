@@ -41,7 +41,7 @@ const TableData = ({
           component={Paper}
           sx={{
             maxHeight: "600px",
-            backgroundColor: "#bcc6c7",
+            backgroundColor: "#656D87",
             padding: "0px 0px",
           }}
         >
@@ -81,7 +81,7 @@ const TableData = ({
                     key={e.id}
                     onClick={() => setSelectedExpense(e)}
                     sx={{
-                      ":hover": { bgcolor: "#eaffe0" },
+                      ":hover": { bgcolor: "#2E3752" },
                       zIndex: 40,
                       cursor: "pointer",
                     }}
