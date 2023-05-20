@@ -1,4 +1,5 @@
 import React from "react";
+import { IoCloseCircle } from "react-icons/io5";
 
 const FormExpense = ({
   handleSubmitexpense,
@@ -10,12 +11,19 @@ const FormExpense = ({
   setDate,
   category,
   setCategory,
+  setShowFormExpense,
 }) => {
+  const toggleForm = () => {
+    setShowFormExpense((prevShowForm) => !prevShowForm);
+  };
   return (
-    <div className="forms">
+    <div className="forms form-expense">
       <form onSubmit={handleSubmitexpense}>
         <div>
-          <label>Date </label>
+          <div className="close-flex">
+            <label>Date </label>
+            <IoCloseCircle className="close-btn" onClick={toggleForm} />
+          </div>
           <input
             required
             type="date"

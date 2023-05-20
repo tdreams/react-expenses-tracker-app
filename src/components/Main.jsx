@@ -23,20 +23,17 @@ const Main = () => {
   const [showForm, setShowForm] = useState(false);
   const [showFormExpense, setShowFormExpense] = useState(false);
   const [selectedExpense, setSelectedExpense] = useState(null);
-  const [nameBudget, setNameBudget] = useState("");
   const [income, setIncome] = useState(0);
   const [listBudget, setListBudget] = useState([]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const newItem = {
-      nameBudget,
       income,
     };
 
     if (income) {
       setListBudget([...listBudget, newItem]);
-      setNameBudget("");
       setIncome(0);
       setShowForm(false);
     }
@@ -97,8 +94,9 @@ const Main = () => {
       <div className="row">
         <MainSideBar
           setShowFormExpense={setShowFormExpense}
-          showFormExpense={showFormExpense}
+          setShowForm={setShowForm}
           selectedExpense={selectedExpense}
+          showForm={showForm}
         />
         <TableData
           sortList={sortList}
@@ -108,25 +106,16 @@ const Main = () => {
           listBudget={listBudget}
           deleteItem={deleteItem}
           setSelectedExpense={setSelectedExpense}
-          setShowForm={setShowForm}
-          showForm={showForm}
+          setShowFormExpense={setShowFormExpense}
+          showFormExpense={showFormExpense}
         />
 
         {showForm && (
           <Forms
             handleSubmit={handleSubmit}
-            nameBudget={nameBudget}
-            setNameBudget={setNameBudget}
-            item={item}
-            setItem={setItem}
             income={income}
             setIncome={setIncome}
-            amount={amount}
-            setAmount={setAmount}
-            date={date}
-            setDate={setDate}
-            category={category}
-            setCategory={setCategory}
+            setShowForm={setShowForm}
           />
         )}
         {showFormExpense && (
@@ -140,6 +129,7 @@ const Main = () => {
             setDate={setDate}
             category={category}
             setCategory={setCategory}
+            setShowFormExpense={setShowFormExpense}
           />
         )}
       </div>

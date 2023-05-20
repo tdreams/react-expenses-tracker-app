@@ -8,10 +8,11 @@ import Main from "./components/Main";
 export default function App() {
   return (
     <>
-      <Nav />
-      <div className="flex">
-        <Sidebar />
-        <Main />
+      <div className="background-image">
+        <Nav />
+        <div className="">
+          <Main />
+        </div>
       </div>
     </>
   );

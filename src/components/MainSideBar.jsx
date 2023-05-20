@@ -8,14 +8,6 @@ const MainSideBar = ({ setShowFormExpense, selectedExpense }) => {
 
   return (
     <div className="main-sidebar">
-      <div className="add-expense">
-        <ul>
-          <a onClick={toggleForm} className="add-ex">
-            <IoAddCircle />
-            Add Expense
-          </a>
-        </ul>
-      </div>
       <div className="current-exp">
         {selectedExpense ? (
           <>

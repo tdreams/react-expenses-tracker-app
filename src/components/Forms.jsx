@@ -1,26 +1,18 @@
 import React from "react";
-const Forms = ({
-  handleSubmit,
-  nameBudget,
-  setNameBudget,
-  income,
-  setIncome,
-}) => {
+import { IoCloseCircle } from "react-icons/io5";
+
+const Forms = ({ handleSubmit, income, setIncome, setShowForm }) => {
+  const toggleForm = () => {
+    setShowForm((prevShowForm) => !prevShowForm);
+  };
   return (
     <div className="forms">
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="namebuget">Budget name</label>
-          <input
-            required
-            type="text"
-            value={nameBudget}
-            placeholder="Add a name for your budget"
-            onChange={(e) => setNameBudget(e.target.value)}
-          />
-        </div>
-        <div>
-          <label htmlFor="income">Income</label>
+          <div className="close-flex">
+            <label htmlFor="income">Income</label>
+            <IoCloseCircle className="close-btn" onClick={toggleForm} />
+          </div>
           <input
             id="incom"
             type="number"

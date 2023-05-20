@@ -14,24 +14,24 @@ const TableData = ({
   sortList,
   sortIcon,
   list,
-  listBudget,
   listExpense,
   deleteItem,
   setSelectedExpense,
-  setShowForm,
+  setShowFormExpense,
 }) => {
   const toggleForm = () => {
-    setShowForm((prevShowForm) => !prevShowForm);
+    setShowFormExpense((prevShowForm) => !prevShowForm);
   };
   return (
     <div className="tabledata">
       <div className="tabBar">
-        <div className="tab">{listBudget.map((e) => e.nameBudget)}</div>
         <div>
           <ul>
             <a onClick={toggleForm} className="add-ex">
-              <IoAddCircle />
-              Add Budget
+              <div>
+                <IoAddCircle />
+              </div>
+              <div>Add Expense</div>
             </a>
           </ul>
         </div>
@@ -68,7 +68,7 @@ const TableData = ({
                   <p>Date</p>
                 </TableCell>
                 <TableCell align="right">
-                  <p>Id</p>
+                  <p>#Id</p>
                 </TableCell>
                 <TableCell align="right"></TableCell>
               </TableRow>
@@ -109,7 +109,7 @@ const TableData = ({
               ) : (
                 <TableRow>
                   <TableCell colSpan={6}>
-                    <h1 align="center">Not Expenses yet!</h1>
+                    <h1 align="center">Nothing to display yet!</h1>
                   </TableCell>
                 </TableRow>
               )}
