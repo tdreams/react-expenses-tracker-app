@@ -11,7 +11,9 @@ const MainSideBar = ({ setShowFormExpense, selectedExpense }) => {
       <div className="current-exp">
         {selectedExpense ? (
           <>
-            <div className="current-item">{selectedExpense.item}</div>
+            <div className="current-item">
+              <h3>{selectedExpense.item}</h3>
+            </div>
             <div className="current-info">
               <p>
                 <span>Id:</span> {selectedExpense.id}

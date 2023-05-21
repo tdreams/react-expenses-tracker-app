@@ -6,7 +6,7 @@ const Forms = ({ handleSubmit, income, setIncome, setShowForm }) => {
     setShowForm((prevShowForm) => !prevShowForm);
   };
   return (
-    <div className="forms">
+    <div className="forms form-income">
       <form onSubmit={handleSubmit}>
         <div>
           <div className="close-flex">

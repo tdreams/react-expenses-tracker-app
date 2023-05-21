@@ -72,7 +72,7 @@ const MuiTable = ({ sortList, sortIcon, totalAmount, list, deleteItem }) => {
           sx={{ borderRadius: "20px" }}
           stickyHeader
         >
-          <TableHead>
+          <TableHead className="table-head">
             <TableRow>
               <TableCell
                 onClick={sortList}

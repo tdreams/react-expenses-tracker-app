@@ -25,24 +25,21 @@ const TableData = ({
   return (
     <div className="tabledata">
       <div className="tabBar">
-        <div>
-          <ul>
-            <a onClick={toggleForm} className="add-ex">
-              <div>
-                <IoAddCircle />
-              </div>
-              <div>Add Expense</div>
-            </a>
-          </ul>
-        </div>
+        <a onClick={toggleForm} className="add-btn-expense">
+          <div>
+            <IoAddCircle className="icon-add" />
+          </div>
+          <p>Add Expense</p>
+        </a>
       </div>
       <div className="table-container">
         <TableContainer
           component={Paper}
           sx={{
-            maxHeight: "600px",
+            maxHeight: "440px",
             backgroundColor: "#656D87",
-            padding: "0px 0px",
+
+            padding: "0px 0px 0px 0px",
           }}
         >
           <Table
@@ -90,10 +87,14 @@ const TableData = ({
                       <p>{e.item}</p>
                     </TableCell>
                     <TableCell align="right">
-                      <p>{Number(e.amount).toFixed(2)}</p>
+                      <p className="amount">$ {Number(e.amount).toFixed(2)}</p>
                     </TableCell>
                     <TableCell align="right">
-                      <p>{e.category}</p>
+                      <p>
+                        {e.category.split(" ").map((word) => {
+                          return word[0].toUpperCase() + word.slice(1) + " ";
+                        })}
+                      </p>
                     </TableCell>
                     <TableCell align="right">
                       <p>{e.date}</p>
@@ -101,7 +102,7 @@ const TableData = ({
                     <TableCell align="right">
                       <p>{e.id.slice(0, 4).toUpperCase()}</p>
                     </TableCell>
-                    <TableCell align="right" className="btn-ic">
+                    <TableCell align="right" className="del-icn">
                       <MdDeleteOutline onClick={() => deleteItem(e.id)} />
                     </TableCell>
                   </TableRow>

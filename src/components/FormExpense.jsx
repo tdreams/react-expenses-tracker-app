@@ -66,7 +66,7 @@ const FormExpense = ({
           />
         </div>
         <div>
-          <label htmlFor="amount">Amount</label>
+          <label htmlFor="amount">Amount $</label>
           <input
             id="amount"
             type="number"

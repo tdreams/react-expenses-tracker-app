@@ -75,7 +75,11 @@ const Main = () => {
     setSortOrder(sortOrder === "asc" ? "desc" : "asc");
   };
   const sortIcon =
-    sortOrder === "asc" ? <MdOutlineArrowDropDown /> : <MdOutlineArrowDropUp />;
+    sortOrder === "asc" ? (
+      <MdOutlineArrowDropDown className="icon-arrow" />
+    ) : (
+      <MdOutlineArrowDropUp className="icon-arrow" />
+    );
   const totalAmount = list.reduce(
     (sum, item) => sum + parseFloat(item.amount),
     0
@@ -91,7 +95,7 @@ const Main = () => {
         setShowForm={setShowForm}
         showForm={showForm}
       />
-      <div className="row">
+      <div className="row ">
         <MainSideBar
           setShowFormExpense={setShowFormExpense}
           setShowForm={setShowForm}
