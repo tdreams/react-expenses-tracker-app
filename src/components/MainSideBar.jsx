@@ -16,7 +16,7 @@ const MainSideBar = ({ setShowFormExpense, selectedExpense }) => {
             </div>
             <div className="current-info">
               <p>
-                <span>Id:</span> {selectedExpense.id}
+                <span>Id:</span> {selectedExpense.id.slice(0, 4)}
               </p>
               {selectedExpense.amount !== 0 ? (
                 <p>

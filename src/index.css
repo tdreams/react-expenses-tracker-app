@@ -280,6 +280,7 @@ body {
 
 .current-exp {
   display: flex;
+  width: 100%;
   flex-direction: column;
   height: 15rem;
   justify-content: center;
@@ -302,7 +303,7 @@ body {
   flex-direction: column;
   line-height: 2;
   justify-content: center;
-  padding: 2rem;
+  padding: 3rem;
 }
 .current-info span {
   font-weight: bolder;

@@ -64,9 +64,9 @@ const TableData = ({
                 <TableCell align="right">
                   <p>Date</p>
                 </TableCell>
-                <TableCell align="right">
+                {/* <TableCell align="right">
                   <p>#Id</p>
-                </TableCell>
+                </TableCell> */}
                 <TableCell align="right"></TableCell>
               </TableRow>
             </TableHead>
@@ -99,9 +99,9 @@ const TableData = ({
                     <TableCell align="right">
                       <p>{e.date}</p>
                     </TableCell>
-                    <TableCell align="right">
+                    {/* <TableCell align="right">
                       <p>{e.id.slice(0, 4).toUpperCase()}</p>
-                    </TableCell>
+                    </TableCell> */}
                     <TableCell align="right" className="del-icn">
                       <MdDeleteOutline onClick={() => deleteItem(e.id)} />
                     </TableCell>
